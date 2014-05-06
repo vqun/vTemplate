@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Test</title>
+  <style type="text/css">
+  </style>
+</head>
+<body>
+<h1>Test</h1>
+</body>
+<script type="text/javascript" src="../build/vTemplate.min.js"></script>
+<script type="text/javascript">
+var tpl = ""+
+'<section class="index-main">'+
+  '<article>'+
+  '<header>'+
+    '<hgroup>'+
+    '<h3 class="blog-title"><=article.title></h3>'+
+    '<h5><=article.labels.join(" ")></h5>'+
+    '<h6>2013-06-24</h6>'+
+    '</hgroup>'+
+  '</header>'+
+  '<p><article.abstract></p>'+
+  '</article>'+
+'</section>'+
+'<aside class="index-aside"><=aside></aside>'+
+'<@each(labels, key, value)>'+
+  '<br/><=key>:&nbsp;<a href="#"><=value></a><br />'+
+'</@each>';
+
+var test = vTemplate(tpl);
+test.compile();
+var html = test.render({
+  "article": {
+    "title": "Hehe",
+    "labels": ["js", "test"],
+    "abstract": "test"
+  },
+  "aside": "ASIDE",
+  "labels": ["a","b","c"]
+});
+document.body.innerHTML = html;
+</script>
+</html>
