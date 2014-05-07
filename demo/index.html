@@ -26,14 +26,16 @@ var tpl = ""+
 '</section>'+
 '<aside class="index-aside"><=aside></aside>'+
 '<@each(labels, key, value)>'+
-  '<br/><=key>:&nbsp;<a href="#">\'<=value>\'</a><br />'+
-'</@each>'+
-'<@each(labels, key, value)>'+
   '<br/><=key>:&nbsp;'+
   '<@each(value, k, v)>'+
-  '<br /><=v><br/>'+
+  '<=k>: <=v><br/>'+
   '</@each>'+
-'</@each>';
+  '<br/><=key>:&nbsp;<a href="#"><=value.join("&")></a><br />'+
+'</@each>'+
+'<@if(labels.length)>'+
+'<a href="#">This is the if function test</a>'+
+'</@if>'
+;
 
 var test = vTemplate(tpl);
 test.compile();
