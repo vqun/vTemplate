@@ -32,7 +32,7 @@
   function vTemplate(tpl) {
     var that = {};
     var info = {
-      "tpl": tpl.replace(/(\"|\')/gm, "\\$1")
+      "tpl": tpl.replace(/(\"|\')/gm, "\\$1").replace(/[\r\n]/gm, "")
     }
     that.compile = function() {
       if(typeof that.render == "function") return;
